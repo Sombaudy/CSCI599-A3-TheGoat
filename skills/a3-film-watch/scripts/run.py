@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+from datetime import datetime, timezone
 from pathlib import Path
 import sys
 from urllib.parse import urlencode
@@ -53,7 +54,11 @@ def watch(mode: str, limit: int, state_dir: Path, token: str) -> dict:
     listing = get_json(f"/movie/{mode}", token, language="en-US", region="US", page=1)
     films: list[dict] = []
     next_state: dict[str, dict] = {}
-    for item in listing.get("results", [])[:limit]:
+    results = listing.get("results", [])
+    if mode == "upcoming":
+        today = datetime.now(timezone.utc).date().isoformat()
+        results = [item for item in results if str(item.get("release_date") or "") >= today]
+    for item in results[:limit]:
         movie_id = int(item["id"])
         cast_data = get_json(f"/movie/{movie_id}/credits", token, language="en-US")
         reviews_data = get_json(f"/movie/{movie_id}/reviews", token, language="en-US", page=1)
