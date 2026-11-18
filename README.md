@@ -1,9 +1,10 @@
-# Actor film watch for Hermes
+# Screen Scout for Hermes
 
-This public skill tap contains `skills/a3-film-watch/SKILL.md` and its portable
-Python helper. It tracks US films now playing or coming soon using TMDB:
-release dates, notable cast, poster links, user ratings, user-review links,
-and popularity changes across checks. Popularity is not box-office revenue.
+This public skill tap contains `skills/a3-screen-scout/SKILL.md` and its portable
+Python helper. Screen Scout looks up named movies and actors, and tracks US
+films now playing or coming soon using TMDB: release dates, principal cast,
+poster links, user ratings, user-review links, and popularity changes across
+checks. Popularity is not box-office revenue or industry news.
 
 The helper uses Python's standard library. Set `TMDB_API_TOKEN` privately in
 the Hermes runtime before using it; never put a token in this repository.
@@ -16,7 +17,7 @@ After publishing this repository on GitHub, install it as a Hermes tap:
 
 ```sh
 hermes skills tap add OWNER/REPO
-hermes skills install OWNER/REPO/a3-film-watch
+hermes skills install OWNER/REPO/a3-screen-scout
 ```
 
 This product uses the TMDB API but is not endorsed or certified by TMDB.
