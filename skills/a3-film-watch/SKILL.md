@@ -11,6 +11,9 @@ metadata:
 
 Use this skill when John asks what films are in theaters or coming soon, who
 stars in them, how TMDB users rate them, or which titles have gained attention.
+For a named movie, look it up with this skill rather than relying on model
+memory. For industry news or reported box-office grosses, use sourced web
+search as well: TMDB popularity is not revenue or news reporting.
 Run one of these bundled commands with the terminal tool:
 
 - `python "${HERMES_SKILL_DIR}/scripts/run.py" now_playing`
